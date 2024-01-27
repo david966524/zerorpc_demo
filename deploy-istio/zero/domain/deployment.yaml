@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: domain
+  namespace: zero
+  labels:
+    app: domain
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: domain
+  template:
+    metadata:
+      labels:
+        app: domain
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: 'true'
+        sidecar.istio.io/logLevel: debug
+    spec:
+      serviceAccountName: find-endpoints
+      imagePullSecrets:
+      - name: harbor
+      containers:
+      - name: domain
+        image: harbor.davidops.info/zero/domain:latest
+        ports:
+        - containerPort: 8081
+          name: rpc

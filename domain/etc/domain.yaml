@@ -1,0 +1,8 @@
+Name: domain.rpc
+ListenOn: 0.0.0.0:8081
+#链路追踪
+Telemetry:
+  Name: domain-rpc
+  Endpoint: http://jaeger-collector.istio-system:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger

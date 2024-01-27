@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email
+  namespace: zero
+  labels:
+    app: email
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: email
+  template:
+    metadata:
+      labels:
+        app: email
+        version: v1
+    spec:
+      serviceAccountName: find-endpoints
+      imagePullSecrets:
+      - name: harbor
+      containers:
+      - name: email
+        image: harbor.davidops.info/zero/email:latest
+        ports:
+        - containerPort: 8082
+          name: rpc

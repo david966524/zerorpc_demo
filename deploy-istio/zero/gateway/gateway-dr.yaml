@@ -1,0 +1,11 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: gateway-dr
+  namespace: zero
+spec:
+  host: gateway
+  subsets:
+    - name: gateway
+      labels:
+        app: gateway

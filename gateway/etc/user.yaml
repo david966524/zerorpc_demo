@@ -1,0 +1,17 @@
+Name: gateway
+Host: 0.0.0.0
+Port: 8888
+UserRpc:
+  Target: k8s://zero/user:8080
+DomainRpc:
+  Target: k8s://zero/domain:8081
+Prometheus:
+  Host: 0.0.0.0
+  Port: 9091
+  Path: /metrics
+#链路追踪
+Telemetry:
+  Name: gateway-api
+  Endpoint: http://jaeger-collector.istio-system:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger

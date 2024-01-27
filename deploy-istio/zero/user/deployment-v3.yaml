@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-v3
+  namespace: zero
+  labels:
+    app: user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+  template:
+    metadata:
+      labels:
+        app: user
+        version: l3
+    spec:
+      serviceAccountName: find-endpoints
+      imagePullSecrets:
+      - name: harbor
+      containers:
+      - name: user
+        image: harbor.davidops.info/zero/user:latest
+        ports:
+        - containerPort: 8080
+          name: rpc

@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService                    ##创建vsvc
+metadata:
+  name: gateway-virtual               ##vsvc的名字
+  namespace: zero
+spec:
+  gateways:
+  - zero-gateway  
+  hosts:
+  - "*"                        ##host绑定web-svc的svc
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:                  ##设定规则，在web-svc之上通过DR这个目的地路由的规则
+        host: gateway
+        port:
+          number: 8888

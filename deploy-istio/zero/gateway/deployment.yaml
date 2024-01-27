@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: zero
+  labels:
+    app: gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+        version: v1
+    spec:
+      serviceAccountName: find-endpoints
+      imagePullSecrets:
+      - name: harbor
+      containers:
+      - name: gateway
+        image: harbor.davidops.info/zero/gateway:latest
+        ports:
+        - containerPort: 8888 
+          name: http
+        - containerPort: 9091
+          name: metric

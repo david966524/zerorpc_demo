@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+  namespace: zero
+  labels:
+    app: gateway
+    service: gateway
+spec:
+  selector:
+    app: gateway
+  ports:
+  - name: tcp-http
+    protocol: TCP
+    port: 8888
+    targetPort: 8888
+  - name: tcp-metric
+    protocol: TCP
+    port: 9091
+    targetPort: 9091
+  type: ClusterIP
+

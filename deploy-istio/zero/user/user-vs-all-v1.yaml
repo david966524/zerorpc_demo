@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: user-vs-v1
+  namespace: zero
+spec:
+  hosts:
+  - user
+  http:
+  - route:
+    - destination:
+        host: user
+        subset: user-v1 #对应dr中的subset name
+      weight: 45
+    - destination:
+        host: user
+        subset: user-v2 #对应dr中的subset name
+      weight: 45
+    - destination:
+        host: user
+        subset: user-v3 #对应dr中的subset name
+      weight: 10

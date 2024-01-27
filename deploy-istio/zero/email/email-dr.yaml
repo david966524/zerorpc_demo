@@ -1,0 +1,11 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: email-dr
+  namespace: zero
+spec:
+  host: email
+  subsets:
+    - name: email
+      labels:
+        app: email

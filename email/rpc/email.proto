@@ -1,0 +1,25 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// proto 包名
+package email;
+
+// 生成 golang 代码后的包名
+option go_package = "./email";
+
+message UserEmailRequest {
+  string username =1;
+  string email=2;
+}
+
+message UserEmailResponse {
+  string msg =1;
+}
+
+
+service email{
+ rpc SendEmail(UserEmailRequest) returns (UserEmailResponse);
+}
+
+
+ //   goctl rpc protoc email/rpc/email.proto --go_out=email/rpc/types --go-grpc_out=email/rpc/types --zrpc_out=email/

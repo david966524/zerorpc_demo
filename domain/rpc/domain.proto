@@ -1,0 +1,25 @@
+// 声明 proto 语法版本，固定值
+    syntax = "proto3";
+
+// proto 包名
+package domain;
+
+// 生成 golang 代码后的包名
+option go_package = "./domain";
+
+//goctl rpc protoc domain/rpc/domain.proto --go_out=domain/rpc/types --go-grpc_out=domain/rpc/types --zrpc_out=domain/
+message DomainInfoResp {
+  repeated DomainInfo domainList =1;
+}
+message DomainInfo{
+  string id = 1;
+  string domainName = 2;
+  string status = 3;
+}
+message DomainReq{
+
+}
+
+service Domain {
+  rpc GetDomainAll(DomainReq) returns (DomainInfoResp);
+}
