@@ -1,5 +1,9 @@
 # zerorpc_demo
 一个grpc的小demo
+```
+curl -X GET  http://192.168.1.52/v1/domain/all
+curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"david\",\"password\": \"123456\"}" http://192.168.1.52/v1/user/login
+```
 # 服务发现
 基于 Kubernetes Endpoints 的服务发现
 https://mp.weixin.qq.com/s/-WaWJaM_ePEQOf7ExNJe7w
