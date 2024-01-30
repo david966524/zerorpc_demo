@@ -26,6 +26,7 @@ func NewGetUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 
 func (l *GetUserInfoLogic) GetUserInfo(req *types.GetUserInfoReq) (resp *types.GetUserInfoResp, err error) {
 	// todo: add your logic here and delete this line
+
 	info, err := l.svcCtx.UserRpc.GetUserInfo(l.ctx, &user.IdRequest{Id: req.Id})
 	return &types.GetUserInfoResp{
 		Id:   info.GetId(),

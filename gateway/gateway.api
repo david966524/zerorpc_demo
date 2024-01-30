@@ -6,7 +6,7 @@ syntax = "v1"
 	// 定义路由前缀为 "/v1"
 	prefix: /v1
 )
-service user {
+service gateway {
 	@handler login
 	post /user/login (LoginReq) returns (LoginResp)
 }
@@ -15,7 +15,7 @@ service user {
 	group:  user
 	prefix: /v1
 )
-service user {
+service gateway {
 	@handler getUserInfo
 	post /user/info (GetUserInfoReq) returns (GetUserInfoResp)
 
@@ -30,7 +30,7 @@ service user {
 	group:  domain
 	prefix: /v1
 )
-service user {
+service gateway {
 	@handler getDomainInfo
 	get /domain/all returns ([]RespDomainInfo)
 }
@@ -39,6 +39,7 @@ type (
 	LoginReq {
 		Username string `json:"username"`
 		Password string `json:"password"`
+		Enduser  string `header:"enduser"`
 	}
 	LoginResp {
 		Id    int64  `json:"id"`
