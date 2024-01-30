@@ -18,7 +18,7 @@ type GetUserInfoResp struct {
 type LoginReq struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
-	Enduser  string `header:"enduser"`
+	Enduser  string `header:"enduser,optional"`
 }
 
 type LoginResp struct {

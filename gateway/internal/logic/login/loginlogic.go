@@ -30,8 +30,7 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 		Username: req.Username,
 		Password: req.Password,
 	})
-	enduser := req.Enduser
-	logx.Info(enduser)
+	logx.Info(req.Enduser)
 	if err != nil {
 		return nil, err
 	}

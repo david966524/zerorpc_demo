@@ -39,7 +39,7 @@ type (
 	LoginReq {
 		Username string `json:"username"`
 		Password string `json:"password"`
-		Enduser  string `header:"enduser"`
+		Enduser  string `header:"enduser,optional"`
 	}
 	LoginResp {
 		Id    int64  `json:"id"`
@@ -78,3 +78,6 @@ type (
 	}
 )
 
+
+
+//  goctl api go --api=gateway/gateway.api --dir=gateway/
