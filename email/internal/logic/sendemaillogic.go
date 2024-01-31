@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"zerorpc_demo/message/rpc/types/message"
 
 	"zerorpc_demo/email/internal/svc"
 	"zerorpc_demo/email/rpc/types/email"
@@ -31,5 +32,7 @@ func (l *SendEmailLogic) SendEmail(in *email.UserEmailRequest) (*email.UserEmail
 	if in.Email == "" {
 		err = errors.New("email 不能为空")
 	}
-	return &email.UserEmailResponse{Msg: fmt.Sprintf("向用户 %v ，邮箱为 %v ，发送验证邮件", in.Username, in.Email)}, err
+	sendMessage, err := l.svcCtx.MessageRpc.SendMessage(l.ctx, &message.SendRequest{Username: in.Username})
+
+	return &email.UserEmailResponse{Msg: fmt.Sprintf("向用户 %v ，邮箱为 %v ，发送验证邮件,%v", in.Username, in.Email, sendMessage.Msg)}, err
 }

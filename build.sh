@@ -1,7 +1,7 @@
 #! /bin/bash
 
 harborurl="harbor.davidops.info"
-services='gateway user domain email'
+services='gateway user domain email message'
 
 for service in $services
 do

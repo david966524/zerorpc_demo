@@ -1,0 +1,26 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// proto 包名
+package message;
+
+// 生成 golang 代码后的包名
+option go_package = "./message";
+
+message SendRequest {
+  string username =1;
+}
+
+
+message SendResponse {
+  string msg =1;
+}
+
+
+
+service Message{
+  rpc SendMessage(SendRequest) returns (SendResponse);
+
+}
+
+//goctl rpc protoc message/rpc/message.proto --go_out=message/rpc/types --go-grpc_out=message/rpc/types --zrpc_out=message/
