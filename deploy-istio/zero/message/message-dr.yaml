@@ -1,0 +1,11 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: message-dr
+  namespace: zero
+spec:
+  host: message
+  subsets:
+    - name: message
+      labels:
+        app: message

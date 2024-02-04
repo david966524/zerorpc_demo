@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message
+  namespace: zero
+  labels:
+    app: message
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: message
+  template:
+    metadata:
+      labels:
+        app: message
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: 'true'
+        sidecar.istio.io/logLevel: debug
+    spec:
+      serviceAccountName: find-endpoints
+      imagePullSecrets:
+        - name: harbor
+      containers:
+        - name: message
+          image: harbor.davidops.info/zero/message:latest
+          ports:
+            - containerPort: 8083
+              name: rpc
