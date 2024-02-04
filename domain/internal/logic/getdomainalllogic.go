@@ -37,17 +37,17 @@ func getLocalZones() []*domain.DomainInfo {
 	var domainList []*domain.DomainInfo
 	zone1 := &domain.DomainInfo{
 		Id:         "35ef8178527791a01fa4f0771020e7ad",
-		DomainName: "hu85254.cc",
+		DomainName: "123333.cc",
 		Status:     "active",
 	}
 	zone2 := &domain.DomainInfo{
 		Id:         "35ef8178527791a01fa4f0771020e7ad",
-		DomainName: "hu85254.com",
+		DomainName: "44332.com",
 		Status:     "active",
 	}
 	zone3 := &domain.DomainInfo{
 		Id:         "35ef8178527791a01fa4f0771020e7ad",
-		DomainName: "hu85254.info",
+		DomainName: "234444.info",
 		Status:     "active",
 	}
 	domainList = append(domainList, zone1)
