@@ -13,7 +13,7 @@ ADD go.sum .
 RUN go mod download
 COPY . .
 COPY message/etc /app/etc
-RUN go build -ldflags="-s -w" -o /app/message .
+RUN go build -ldflags="-s -w" -o /app/message message/message.go
 
 
 FROM golang:alpine
